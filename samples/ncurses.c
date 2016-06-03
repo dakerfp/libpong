@@ -25,68 +25,86 @@
 #include <unistd.h>
 
 const char *NUMBERS[10][5] = {
-    {"XXXX",
-     "X  X",
-     "X  X",
-     "X  X",
-     "XXXX"},
-    {"   X",
-     "   X",
-     "   X",
-     "   X",
-     "   X"},
-    {"XXXX",
-     "   X",
-     "XXXX",
-     "X   ",
-     "XXXX"},
-    {"XXXX",
-     "   X",
-     "XXXX",
-     "   X",
-     "XXXX"},
-    {"X  X",
-     "X  X",
-     "XXXX",
-     "   X",
-     "   X"},
-    {"XXXX",
-     "X   ",
-     "XXXX",
-     "   X",
-     "XXXX"},
-    {"XXXX",
-     "X   ",
-     "XXXX",
-     "X  X",
-     "XXXX"},
-    {"XXXX",
-      "   X",
-     "   X",
-     "   X",
-     "   X"},
-    {"XXXX",
-     "X  X",
-     "XXXX",
-     "X  X",
-     "XXXX"},
-    {"XXXX",
-     "X  X",
-     "XXXX",
-     "   X",
-     "XXXX"}
+    {
+        "XXXX",
+        "X  X",
+        "X  X",
+        "X  X",
+        "XXXX"
+    },
+    {
+        "   X",
+        "   X",
+        "   X",
+        "   X",
+        "   X"
+    },
+    {
+        "XXXX",
+        "   X",
+        "XXXX",
+        "X   ",
+        "XXXX"
+    },
+    {
+        "XXXX",
+        "   X",
+        "XXXX",
+        "   X",
+        "XXXX"
+    },
+    {
+        "X  X",
+        "X  X",
+        "XXXX",
+        "   X",
+        "   X"
+    },
+    {
+        "XXXX",
+        "X   ",
+        "XXXX",
+        "   X",
+        "XXXX"
+    },
+    {
+        "XXXX",
+        "X   ",
+        "XXXX",
+        "X  X",
+        "XXXX"
+    },
+    {
+        "XXXX",
+        "   X",
+        "   X",
+        "   X",
+        "   X"
+    },
+    {
+        "XXXX",
+        "X  X",
+        "XXXX",
+        "X  X",
+        "XXXX"
+    },
+    {
+        "XXXX",
+        "X  X",
+        "XXXX",
+        "   X",
+        "XXXX"
+    }
 };
 
-void draw_vline(const struct pong_size size)
-{
+void draw_vline(const struct pong_size size) {
     int x = (int) size.width / 2;
     int y;
     for (y = 0; y <= (int)size.height; ++y)
         mvaddch(y, x, ACS_VLINE);
 }
 
-void draw_score(unsigned score, int x, int y)
-{
+void draw_score(unsigned score, int x, int y) {
     int i, j;
     for (i = 0; i < 5; ++i)
         for (j = 0; j < 5; ++j)
@@ -94,8 +112,7 @@ void draw_score(unsigned score, int x, int y)
                 mvaddch(y + i, x + j, ACS_CKBOARD);
 }
 
-void draw_player(const struct pong_player *p)
-{
+void draw_player(const struct pong_player *p) {
     int x = p->pos.x;
     int to = p->pos.y + (int)p->size;
     int y;
@@ -103,13 +120,11 @@ void draw_player(const struct pong_player *p)
         mvaddch(y, x, ACS_CKBOARD);
 };
 
-void draw_ball(const struct pong_ball *b)
-{
+void draw_ball(const struct pong_ball *b) {
     mvaddch(b->pos.y, b->pos.x, ACS_DIAMOND);
 }
 
-int main(void)
-{
+int main(void) {
     initscr();
     cbreak();
     raw();
@@ -119,12 +134,16 @@ int main(void)
     struct pong_game g = {
         .grid = {.width = (unsigned)COLS, .height = (unsigned)LINES},
         .players = {
-            { .score = 0,
-              .size = 10,
-              .pos = {.x = 0, .y = LINES / 2 } },
-            { .score = 0,
-              .size = 10,
-              .pos = {.x = COLS - 1, .y = LINES / 2 } }
+            {
+                .score = 0,
+                .size = 10,
+                .pos = {.x = 0, .y = LINES / 2 }
+            },
+            {
+                .score = 0,
+                .size = 10,
+                .pos = {.x = COLS - 1, .y = LINES / 2 }
+            }
         },
         .ball = {
             .pos = {.x = 5, .y = 5},
