@@ -137,12 +137,12 @@ int main(void) {
             {
                 .score = 0,
                 .size = 10,
-                .pos = {.x = 0, .y = LINES / 2 }
+                .pos = {.x = 0, .y = (LINES - 10) / 2}
             },
             {
                 .score = 0,
                 .size = 10,
-                .pos = {.x = COLS - 1, .y = LINES / 2 }
+                .pos = {.x = COLS - 1, .y = (LINES - 10) / 2}
             }
         },
         .ball = {
