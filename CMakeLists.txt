@@ -2,8 +2,8 @@ project(libpong C)
 cmake_minimum_required(VERSION 2.8)
 
 if (NOT CMAKE_BUILD_TYPE)
-	message(STATUS "No build type selected, defaulting to Debug")
-	set(CMAKE_BUILD_TYPE "Debug")
+    message(STATUS "No build type selected, defaulting to Debug")
+    set(CMAKE_BUILD_TYPE "Debug")
 endif ()
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wshadow -Wconversion -Os -std=gnu11")
