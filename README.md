@@ -21,9 +21,13 @@ make
 
 ## Samples
 
-Currently there is a sample pong implementation using ncurses.
+Currently there is samples in ncurses and x11 implementation.
 
+### ncurses
 ![ncurses](./ncurses.png)
+
+### X11
+![x11](./x11.png)
 
 ## Contributing
 
