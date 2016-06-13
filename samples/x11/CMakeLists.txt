@@ -7,7 +7,7 @@ if (X11_FOUND)
     )
     target_link_libraries(pong-x11
         X11
-        libpong
+        pong
     )
 else ()
     message(STATUS "X11 sample application not being built: x11 not found")

@@ -9,6 +9,6 @@ endif ()
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wshadow -Wconversion -Os -std=gnu11")
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} ${C_FLAGS_REL}")
 
-include_directories(libpong)
-add_subdirectory(libpong)
+include_directories(pong)
+add_subdirectory(pong)
 add_subdirectory(samples)

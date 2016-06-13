@@ -7,7 +7,7 @@ if (NCURSES_FOUND)
     )
     target_link_libraries(pong-ncurses
         ncurses
-        libpong
+        pong
     )
 else ()
     message(STATUS "ncurses sample application not being built: ncurses not found")
