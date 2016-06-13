@@ -63,8 +63,12 @@ static int ball_hits_wall(struct pong_ball *b, const struct pong_size sz) {
     return 0;
 }
 
-static void player_move(struct pong_player *p, int dy) {
+static void player_move(struct pong_player *p, int dy, unsigned int height) {
     p->pos.y += dy;
+    if (p->pos.y < 0)
+        p->pos.y = 0;
+    else if (p->pos.y + (int)p->size > (int)height)
+        p->pos.y = (int)height - (int)p->size;
 }
 
 static void ball_move(struct pong_ball *b) {
@@ -73,8 +77,8 @@ static void ball_move(struct pong_ball *b) {
 }
 
 int pong_game_tick(struct pong_game *g, int cmd[2]) {
-    player_move(&g->players[0], cmd[0]);
-    player_move(&g->players[1], cmd[1]);
+    player_move(&g->players[0], cmd[0], g->grid.height);
+    player_move(&g->players[1], cmd[1], g->grid.height);
     ball_move(&g->ball);
     ball_hits_player(&g->ball, &g->players[0]);
     ball_hits_player(&g->ball, &g->players[1]);
